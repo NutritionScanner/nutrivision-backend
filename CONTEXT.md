@@ -15,4 +15,3 @@ nutrivision-backend/
 │── config.py              # Load environment variables
 │── static/                # Store test images (optional)
 │── README.md              # Project documentation
-    
