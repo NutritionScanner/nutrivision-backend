@@ -1,0 +1,13 @@
+fastapi[standard]
+requests
+python-dotenv
+aiofiles
+pydantic
+torch
+transformers
+Pillow
+google-genai
+sqlalchemy
+passlib
+python-jose
+cassandra-driver
