@@ -3,8 +3,8 @@ requests
 python-dotenv
 aiofiles
 pydantic
-torch
-transformers
+# torch
+# transformers
 Pillow
 google-genai
 sqlalchemy
