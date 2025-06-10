@@ -13,6 +13,9 @@ class NutritionSummary(BaseModel):
     fiber: str
     sugar: str
     health_rating: str
+    average_serving_size: str
+    calories_per_serving: str
+    serving_notes: str
 
 
 # Initialize the Gemini client with API key
@@ -25,7 +28,7 @@ def generate_summary(food_item: str) -> NutritionSummary:
     """
     prompt = f"""
     Provide a structured nutritional breakdown for {food_item} in JSON format.
-    Use this schema:
+    Include the following data fields:
     {{
         "food_item": "{food_item}",
         "summary": "Brief nutritional and health benefits summary",
@@ -35,8 +38,12 @@ def generate_summary(food_item: str) -> NutritionSummary:
         "fats": "Fat content in grams per 100g",
         "fiber": "Fiber content in grams per 100g",
         "sugar": "Sugar content in grams per 100g",
-        "health_rating": "Healthy / Moderate / Unhealthy"
+        "health_rating": "Healthy / Moderate / Unhealthy",
+        "average_serving_size": "Description or weight (g) of a typical serving",
+        "calories_per_serving": "Estimated calories per typical serving",
+        "serving_notes": "Additional remarks on the serving size"
     }}
+    Return the pure JSON without extra commentary.
     """
 
     response = client.models.generate_content(
@@ -61,7 +68,10 @@ def generate_summary(food_item: str) -> NutritionSummary:
             fats="N/A",
             fiber="N/A",
             sugar="N/A",
-            health_rating="Unknown"
+            health_rating="Unknown",
+            average_serving_size="N/A",
+            calories_per_serving="N/A",
+            serving_notes="N/A"
         )
 
     return structured_data

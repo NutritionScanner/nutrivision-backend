@@ -13,7 +13,7 @@ origins = [
     "http://127.0.0.1:3000",
     "exp://192.168.1.3:8081",
     "http://10.0.2.2",
-    # "*"  # Allow all origins (if needed)
+    "*"  # Allow all origins (if needed)
 ]
 
 # Add CORS middleware
