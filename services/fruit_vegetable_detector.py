@@ -63,17 +63,11 @@ def detect_fruit_or_vegetable(image_path: str, retries: int = 3, delay: int = 5)
                     result = response.json()
 
                     if isinstance(result, list) and len(result) > 0:
-                        return {
-                            "predictions": result,
-                            "top_prediction": result[0]["label"],
-                            "confidence": result[0]["score"]
-                        }
+                        return result[0]["label"],
+                        
                     elif isinstance(result, dict):
-                        return {
-                            "predictions": [result],
-                            "top_prediction": result.get("label", "unknown"),
-                            "confidence": result.get("score", 0.0)
-                        }
+                        return result[0]["label"],
+                        
                     else:
                         raise HuggingFaceAPIError("Unexpected API response format.")
 
